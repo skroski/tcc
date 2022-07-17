@@ -1,6 +1,5 @@
 {
   "version": 2,
-  
   "projects": {
     "api": "apps/api",
     "api-interface": "libs/api-interface",

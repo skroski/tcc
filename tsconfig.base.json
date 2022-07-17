@@ -10,18 +10,36 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tcc/api-interface": ["libs/api-interface/src/index.ts"],
-      "@tcc/button": ["libs/button/src/index.ts"],
-      "@tcc/shared-types": ["libs/shared-types/src/index.ts"],
-      "@tcc/storybook": ["libs/storybook/src/index.ts"],
-      "@tcc/ui-header": ["libs/ui-header/src/index.ts"],
-      "@tcc/ui-sidebar": ["libs/ui-sidebar/src/index.ts"]
+      "@tcc/api-interface": [
+        "libs/api-interface/src/index.ts"
+      ],
+      "@tcc/button": [
+        "libs/button/src/index.ts"
+      ],
+      "@tcc/shared-types": [
+        "libs/shared-types/src/index.ts"
+      ],
+      "@tcc/storybook": [
+        "libs/storybook/src/index.ts"
+      ],
+      "@tcc/ui-header": [
+        "libs/ui-header/src/index.ts"
+      ],
+      "@tcc/ui-sidebar": [
+        "libs/ui-sidebar/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
