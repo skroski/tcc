@@ -27,9 +27,6 @@
       "@tcc/shared-types": [
         "libs/shared-types/src/index.ts"
       ],
-      "@tcc/storybook": [
-        "libs/storybook/src/index.ts"
-      ],
       "@tcc/ui-header": [
         "libs/ui-header/src/index.ts"
       ],
