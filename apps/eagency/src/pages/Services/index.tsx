@@ -40,8 +40,20 @@ export function Services() {
     <>
       <h1>Service</h1>
       <form onSubmit={handleSubmit(handleCreateNewService)}>
-      <label htmlFor="task">Vou trabalhar em</label>
+      <label htmlFor="task">Título do Serviço</label>
       <input type="text" placeholder="Digite o título do Serviço"></input>
+      <label htmlFor="task">Resumo</label>
+      <input type="text" placeholder="Digite o resumo:"></input>
+      <label htmlFor="task">Descrição</label>
+      <input type="text" placeholder="Digite uma descrição:"></input>
+      <label htmlFor="task">Preço</label>
+      <input type="number" placeholder="Valor"></input>
+      <label htmlFor="task">Tipo</label>
+      <select name="Tipo">
+        <option value="">Único</option>
+        <option value="">Recorrente</option>
+      </select>
+      <button>Inserir Serviço</button>
       </form>
     </>
   );
