@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ['./apps/eagency/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./apps/eagency/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {},
   },

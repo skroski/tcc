@@ -24,7 +24,7 @@ export class ServiceRepository {
     async deleteServiceByID(serviceID: string): Promise<Service> {
         return this.serviceModel.findOneAndDelete({ _id: serviceID })
     }
-    async updateServiceByID(serviceID: string, newService: ServiceDTO): Promise<Service> {
+    async updateServiceByID(serviceID: string, newService: ServiceDTO) {
         return await this.serviceModel.replaceOne({ _id: serviceID }, newService)
     }
     async getServicesByUserName(userName: string[]): Promise<Service[]> {

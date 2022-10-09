@@ -1,10 +1,11 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "root": "apps/api",
   "sourceRoot": "apps/api/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:build",
+      "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/api",
@@ -27,9 +28,14 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/node:execute",
+      "executor": "@nrwl/node:node",
       "options": {
         "buildTarget": "api:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "api:build:production"
+        }
       }
     },
     "lint": {
