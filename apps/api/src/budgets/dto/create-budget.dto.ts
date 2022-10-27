@@ -1,7 +1,7 @@
 import { ArrayMinSize, IsNotEmpty, IsNumber, IsPositive, IsString, MaxLength, MinLength, ValidateNested } from "class-validator";
-import { UsersDTO } from "../../users/dto/create-user.dto";
 import { Type } from "class-transformer";
-import { CreateClientDTO } from "../../clients/dto/create-client.dto";
+//import { UsersDTO } from "../../users/dto/create-user.dto";
+//import { CreateClientDTO } from "../../clients/dto/create-client.dto";
 import { ServiceDTO } from "../../services/dto/create-service.dto";
 
 export class CreateBudgetDto {
@@ -26,12 +26,12 @@ export class CreateBudgetDto {
     //@IsNotEmptyObject({ each : true})
     readonly services: ServiceDTO[];
 
-    @IsNotEmpty()
-    @ValidateNested({each : true})
-    @Type(() => CreateClientDTO)
-    @ArrayMinSize(1)
-    //@IsNotEmptyObject({ each : true})
-    readonly clients: CreateClientDTO[];
+    // @IsNotEmpty()
+    // @ValidateNested({each : true})
+    // @Type(() => CreateClientDTO)
+    // @ArrayMinSize(1)
+    // //@IsNotEmptyObject({ each : true})
+    // readonly clients: CreateClientDTO[];
 
     @IsNotEmpty()
     @IsString()

@@ -2,59 +2,58 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import axios from "axios";
-import { API_URL, Service } from "@tcc/api-interface";
+import { API_URL, Client } from "@tcc/api-interface";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 import { PencilIcon, TrashIcon } from "@heroicons/react/outline";
 
-const newServiceFormValidationSchema = zod.object({
+const newClientFormValidationSchema = zod.object({
   task: zod.string().min(1, "Informe a tarefa"),
   minutesAmount: zod
     .number()
     .min(5, "O ciclo precisa ser de no mínimo 5 minutos.")
     .max(60, "O ciclo precisa ser de no máximo 60 minutos."),
 });
-type NewServiceFormData = zod.infer<typeof newServiceFormValidationSchema>;
+type NewClientFormData = zod.infer<typeof newClientFormValidationSchema>;
 
-export function Services() {
-  const [services, setServices] = useState<Service[]>([]);
-  const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
+export function Clients() {
+  const [clients, setClients] = useState<Client[]>([]);
+  const [activeClientId, setActiveClientId] = useState<string | null>(null);
 
-  const { register, handleSubmit, watch, reset } = useForm<NewServiceFormData>({
-    resolver: zodResolver(newServiceFormValidationSchema),
+  const { register, handleSubmit, watch, reset } = useForm<NewClientFormData>({
+    resolver: zodResolver(newClientFormValidationSchema),
   });
-  function handleCreateNewService(data: any) {
+  function handleCreateNewClient(data: any) {
     const id = String(new Date().getTime());
 
-    const newService: Service = {
+    const newClient: Client = {
       id,
       task: data.task,
       minutesAmount: data.minutesAmount,
     };
 
-    setServices((state) => [...state, newService]);
-    setActiveServiceId(id);
+    setClients((state) => [...state, newClient]);
+    setActiveClientId(id);
     reset();
   }
 
   //const [apiResponse, setApiResponse] = useState({message: 'Loading...'});
 
-  const getServices = useCallback(async () => {
-    const resp = await axios.get<Service[]>(API_URL + "services");
-    setServices(resp.data);
+  const getClients = useCallback(async () => {
+    const resp = await axios.get<Client[]>(API_URL + "Clients");
+    setClients(resp.data);
     console.log(resp);
   }, []);
 
   useEffect(() => {
-    getServices();
+    getClients();
   }, []);
   return (
     <>
-    <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <h1 className="text-3xl">Serviços</h1>
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        onSubmit={handleSubmit(handleCreateNewService)}
+        onSubmit={handleSubmit(handleCreateNewClient)}
       >
         <div className="mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 xl:w-3/4">
           <div className="flex flex-wrap -mx-3 mb-6">
@@ -171,7 +170,7 @@ export function Services() {
                     </th>
                   </tr>
                 </thead>
-                {services.map((s) => {
+                {clients.map((s) => {
                   return (
                     <>
                       <tbody className="divide-y divide-gray-200">
@@ -183,7 +182,7 @@ export function Services() {
                             {s.name}
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                            {s.price}
+                            {s.email}
                           </td>
                           <td className="px-6 py-4 text-sm font-medium text-right ">
                             <a
@@ -213,7 +212,6 @@ export function Services() {
             </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );
