@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { PageTitle } from '..';
+import { AuthButtons, PageTitle, SignUpButton, Profile} from '..';
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
@@ -129,6 +129,7 @@ export function UiHeader(props: UiHeaderProps) {
                           >
                             Sign out
                           </a>
+                         
                         )}
                       </Menu.Item>
                     </Menu.Items>
@@ -137,7 +138,9 @@ export function UiHeader(props: UiHeaderProps) {
               </div>
             </div>
           </div>
-
+          <SignUpButton></SignUpButton>
+          <AuthButtons></AuthButtons>
+          <Profile />
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (

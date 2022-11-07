@@ -6,6 +6,8 @@ import { API_URL, Client } from "@tcc/api-interface";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 import { PencilIcon, TrashIcon } from "@heroicons/react/outline";
+import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import Loading from "../../../../../libs/ui-header/src/lib/loading/loading";
 
 const newClientFormValidationSchema = zod.object({
   task: zod.string().min(1, "Informe a tarefa"),
@@ -216,3 +218,6 @@ export function Clients() {
     </>
   );
 }
+export default withAuthenticationRequired(Clients, {
+  onRedirecting: () => <Loading />,
+});

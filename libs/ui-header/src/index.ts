@@ -1,4 +1,10 @@
 
+export * from './lib/profile/profile';
+
+export * from './lib/loading/loading';
+
+export * from './lib/auth-buttons/auth-buttons';
+
 export * from './lib/logout-button/logout-button';
 
 export * from './lib/login-button/login-button';

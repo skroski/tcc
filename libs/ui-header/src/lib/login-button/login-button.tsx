@@ -13,8 +13,6 @@ export function LoginButton(props: LoginButtonProps) {
       >
         Log In
       </button>
-
-      <h1>Welcome to LoginButton!</h1>
     </div>
   );
 }
