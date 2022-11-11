@@ -1,136 +1,31 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
 
-import axios from "axios";
-import { API_URL, Service } from "@tcc/api-interface";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as zod from "zod";
+import { ServiceProps, ServicesService } from "@tcc/api-interface";
+
 import { PencilIcon, TrashIcon } from "@heroicons/react/outline";
-
-const newServiceFormValidationSchema = zod.object({
-  task: zod.string().min(1, "Informe a tarefa"),
-  minutesAmount: zod
-    .number()
-    .min(5, "O ciclo precisa ser de no mínimo 5 minutos.")
-    .max(60, "O ciclo precisa ser de no máximo 60 minutos."),
-});
-type NewServiceFormData = zod.infer<typeof newServiceFormValidationSchema>;
+import CreateService from "../../components/CreateService";
 
 export function Services() {
-  const [services, setServices] = useState<Service[]>([]);
-  const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
+   const [service, setService] = useState<ServiceProps[]>([]);
+  const servicesService = new ServicesService();
 
-  const { register, handleSubmit, watch, reset } = useForm<NewServiceFormData>({
-    resolver: zodResolver(newServiceFormValidationSchema),
-  });
-  function handleCreateNewService(data: any) {
-    const id = String(new Date().getTime());
-
-    const newService: Service = {
-      id,
-      task: data.task,
-      minutesAmount: data.minutesAmount,
-    };
-
-    setServices((state) => [...state, newService]);
-    setActiveServiceId(id);
-    reset();
+  function deleteService(serviceId: string) {
+    servicesService.deleteService(serviceId).then(response => {
+        console.log(response)
+      });
   }
 
-  //const [apiResponse, setApiResponse] = useState({message: 'Loading...'});
-
-  const getServices = useCallback(async () => {
-    const resp = await axios.get<Service[]>(API_URL + "services");
-    setServices(resp.data);
-    console.log(resp);
-  }, []);
-
   useEffect(() => {
-    getServices();
+   servicesService.getAllServices().then(services => {
+      setService(services)
+    });
   }, []);
   return (
     <>
+   Teste 1 <CreateService />
     <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <h1 className="text-3xl">Serviços</h1>
-      <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        onSubmit={handleSubmit(handleCreateNewService)}
-      >
-        <div className="mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 xl:w-3/4">
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                htmlFor="task"
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              >
-                Título do Serviço
-              </label>
-              <input
-                type="text"
-                placeholder="Digite o título do Serviço"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              ></input>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                htmlFor="task"
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              >
-                Resumo
-              </label>
-              <input
-                type="text"
-                placeholder="Digite o resumo:"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              ></input>
-            </div>
-          </div>
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full px-3">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Descrição
-              </label>
-              <textarea
-                placeholder="Digite uma descrição:"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              ></textarea>
-            </div>
-          </div>
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                htmlFor="task"
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              >
-                Preço
-              </label>
-              <input
-                type="number"
-                placeholder="Valor"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              ></input>
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                htmlFor="task"
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              >
-                Tipo
-              </label>
-              <select
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                name="Tipo"
-              >
-                <option value="">Único</option>
-                <option value="">Recorrente</option>
-              </select>
-            </div>
-          </div>
-          <button className="pointer border radius bg-green-300 border-green-600 p-3">
-            Inserir Serviço
-          </button>
-        </div>
-      </form>
+   
 
       <div className="flex flex-col">
         <div className="overflow-x-auto">
@@ -155,7 +50,7 @@ export function Services() {
                       scope="col"
                       className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                     >
-                      Tipo
+                      Preço
                     </th>
                     <th
                       scope="col"
@@ -171,13 +66,13 @@ export function Services() {
                     </th>
                   </tr>
                 </thead>
-                {services.map((s) => {
+                {service.map((s) => {
                   return (
                     <>
                       <tbody className="divide-y divide-gray-200">
                         <tr>
                           <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                            1
+                            {s._id}
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                             {s.name}
@@ -196,13 +91,13 @@ export function Services() {
                           </td>
                           <td className="px-6 py-4 text-sm font-medium text-right">
                             
-                            <a
-                              className="flex justify-end text-red-500 hover:text-red-700"
-                              href="#"
+                            <button
+                              className="flex justify-end cursor-pointer text-red-500 hover:text-red-700"
+                              onClick={(e) => deleteService(s._id)} 
                             >
                               <TrashIcon className="h-6 w-6" aria-hidden="true" />
                               Deletar
-                            </a>
+                            </button>
                           </td>
                         </tr>
                       </tbody>
