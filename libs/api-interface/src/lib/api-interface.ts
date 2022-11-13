@@ -1,7 +1,7 @@
 export interface ApiResponse {
   message: string;
 }
-export const API_URL = 'https://eagencyapp.herokuapp.com/';
+export const API_URL = 'https://eagencyapp.herokuapp.com';
 
 import { Document } from "mongoose";
 
@@ -20,7 +20,7 @@ export class ServicesService {
 
   //const [apiResponse, setApiResponse] = useState({message: 'Loading...'});
   public async getAllServices(): Promise<any> {
-    const response = await axios.get<ServiceProps[]>(API_URL + "services");
+    const response = await axios.get<ServiceProps[]>(API_URL + "/services");
     console.log(response.data)
     return await response.data;
   };
@@ -41,7 +41,7 @@ export class ServicesService {
 
   }
   public async deleteService(serviceId: number): Promise<any> {
-    const response = await axios.delete(API_URL + `services/${serviceId}`, {method: 'DELETE'})
+    const response = await axios.delete(API_URL + `/services/${serviceId}`, {method: 'DELETE'})
     return await response.data;
 }
 }
