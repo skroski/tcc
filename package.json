@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/apps/eagency/index.html",
+    "start": "node dist/apps/api/main.js",
     "build": "nx build api --prod && nx build eagency --prod ",
     "test": "nx test"
   },
