@@ -1,4 +1,4 @@
-export const API_URL = 'https://eagencyapp.herokuapp.com';
+export const API_URL = 'https://eagencyapp.herokuapp.com/api';
 
 import * as mongoose from 'mongoose';
 export interface Services {

@@ -1,7 +1,7 @@
 export interface ApiResponse {
   message: string;
 }
-export const API_URL = 'https://eagencyapp.herokuapp.com';
+export const API_URL = 'https://eagencyapp.herokuapp.com/api';
 
 import { Document } from "mongoose";
 
