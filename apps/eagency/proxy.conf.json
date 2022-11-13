@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://eagencyapp.herokuapp.com:3333",
+    "target": "https://eagencyapp.herokuapp.com/api",
     "secure": false
   }
 }

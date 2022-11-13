@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/apps/api/main.js",
-    "build": "nx build api --prod",
+    "build": "nx build api --prod && nx build eagency --prod ",
     "test": "nx test"
   },
   "private": true,

@@ -16,13 +16,13 @@ async function bootstrap() {
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('', app, document)
 
-  const globalPrefix = '';
+  const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
   const port = process.env.PORT || 3000;
   
   await app.listen(port);
   Logger.log(
-    `🚀 Application is running on: https://eagencyapp.herokuapp.com/${globalPrefix}`
+    `🚀 Application is running on: https://eagencyapp.herokuapp.com/api/${globalPrefix}`
   );
   
 }
