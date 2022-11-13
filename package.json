@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/apps/api/main.js",
+    "start": "node dist/apps/eagency/index.html",
     "build": "nx run-many --target=serve --projects=eagency,api --parallel=true",
     "dev": "nx run-many --target=serve --projects=eagency,api --parallel=true",
     "test": "nx test"
