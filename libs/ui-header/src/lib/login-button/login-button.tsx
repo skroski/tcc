@@ -8,7 +8,7 @@ export function LoginButton(props: LoginButtonProps) {
   return (
     <div className={styles["container"]}>
       <button
-        className="bg-green-500 font-white py-3 px-4 border border-green-800 cursor-pointer rounded"
+        className="border-green-200 font-white py-2 px-3 border text-sm text-green-100 cursor-pointer rounded"
         onClick={() => loginWithRedirect()}
       >
         Log In

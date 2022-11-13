@@ -22,7 +22,8 @@ export function Services() {
   }, []);
   return (
     <>
-   Teste 1 <CreateService />
+    <h2>Cadastro de Serviços</h2>
+   <CreateService />
     <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <h1 className="text-3xl">Serviços</h1>
    

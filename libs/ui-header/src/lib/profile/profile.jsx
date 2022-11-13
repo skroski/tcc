@@ -9,7 +9,7 @@ export function Profile() {
   return (
     <div className={styles['container']}>
       
-      <h1 className="text-purple-200">Welcome to Profile!{user?.name}</h1>
+      <h1 className="text-purple-200">Bem Vindo, {user?.name}</h1>
    
           <img
             src={user?.picture}
@@ -20,11 +20,7 @@ export function Profile() {
           <h2>{user?.name}</h2>
           <p className="lead text-muted">{user?.mail}</p>
         </div>
-      <div className="row">
-        <pre className="col-12 text-light bg-dark p-4">
-        {JSON.stringify(user, null, 2)}
-        </pre>
-      </div>
+   
       
     </div>
   );

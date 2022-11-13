@@ -10,7 +10,7 @@ export function SignUpButton(props: SignUpButtonProps) {
   const { loginWithRedirect } = useAuth0();
   return (
     <button
-      className="bg-blue-500 font-white py-3 px-4 border border-blue-800 cursor-pointer rounded"
+      className="border-blue-200 font-white py-2 px-3 border text-sm text-blue-200 cursor-pointer rounded"
       onClick={() =>
         loginWithRedirect({
           screen_hint: 'signup',

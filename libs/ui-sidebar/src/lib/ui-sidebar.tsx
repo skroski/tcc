@@ -9,8 +9,8 @@ export function UiSidebar(props: UiSidebarProps) {
   return (
     <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r 
         dark:bg-gray-800 dark:border-gray-600">
-        <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">
-          Logotipo
+        <h2 className="text-2xl font-semibold text-gray-600 dark:text-white">
+         Menu Lateral
         </h2>
 
         <div className="relative mt-6">

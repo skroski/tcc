@@ -13,7 +13,7 @@ export function LogoutButton(props: LogoutButtonProps) {
       
 
     <button
-      className="bg-red-700 text-white py-3 px-4 rounded border border-red-800 cursor-pointer"
+      className="border-red-200 py-2 px-3 text-sm rounded border text-red-100 cursor-pointer"
       onClick={() =>
         logout({
           returnTo: window.location.origin,
