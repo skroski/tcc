@@ -7,11 +7,10 @@ import { UsersModule } from '../users/users.module';
 
 @Module({
   imports: [                
-    //MongooseModule.forRoot(
-       //'mongodb+srv://daniel:dan@098765@cluster0.7ojjg.mongodb.net/duplod', { useNewUrlParser : true, useUnifiedTopology: true }
-     //), 
-    //ServicesModule,
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/tcc'),
+    MongooseModule.forRoot(
+       'mongodb+srv://daniel:T3U7k2T3PuczktGY@cluster0.7ojjg.mongodb.net/duplod?ssl=true&connectTimeoutMS=5000&maxPoolSize=50&retryWrites=true&w=majority', { useNewUrlParser : true, useUnifiedTopology: true }
+     ), 
+    //MongooseModule.forRoot('mongodb://127.0.0.1:27017/tcc'),
     BudgetsModule,
     ServicesModule, 
     UsersModule,

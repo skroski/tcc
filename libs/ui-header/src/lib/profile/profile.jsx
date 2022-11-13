@@ -32,5 +32,5 @@ export function Profile() {
 
 
 export default withAuthenticationRequired(Profile, {
-  onRedirecting: () => <Loading />,
+  onRedirecting: () => <div>Loading...</div>,
 });

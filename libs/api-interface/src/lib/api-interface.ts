@@ -1,7 +1,7 @@
 export interface ApiResponse {
   message: string;
 }
-export const API_URL = 'http://localhost:3000/';
+export const API_URL = 'https://apiagency.duplod.com.br/';
 
 import { Document } from "mongoose";
 
