@@ -41,10 +41,6 @@ export default function CreateService() {
             e.target.reset();
         });
       }
-      /* const addServices = (title: string, excerpt: string, description: string) => {
-      
-
-      } */
 
 
 
@@ -53,7 +49,7 @@ export default function CreateService() {
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit(handleCreateNewService)}
       >
-        <div className="mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 xl:w-3/4">
+        <div className="mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 ">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label
@@ -68,7 +64,7 @@ export default function CreateService() {
                 name="name"
                 id="name"
                 placeholder="Digite o título do Serviço"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               ></input>
             </div>
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -84,7 +80,7 @@ export default function CreateService() {
                 name="excerpt"
                 id="excerpt"
                 placeholder="Digite o resumo:"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               ></input>
             </div>
           </div>
@@ -134,7 +130,7 @@ export default function CreateService() {
               </select>
             </div>
           </div>
-          <button type="submit" className="pointer border radius bg-green-300 border-green-600 p-3">
+          <button type="submit" className="cursor-pointer border-2 rounded text-green-600 border-green-600 p-3">
             Inserir Serviço
           </button>
         </div>

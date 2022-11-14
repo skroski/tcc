@@ -3,6 +3,8 @@ import LoginButton from "../login-button/login-button";
 import { useAuth0 } from "@auth0/auth0-react";
 import styles from "./auth-buttons.module.scss";
 import Loading from "../loading/loading";
+import SignUpButton from "../sign-up-button/sign-up-button";
+import Profile from "../profile/profile";
 
 /* eslint-disable-next-line */
 export interface AuthButtonsProps {}
@@ -17,9 +19,23 @@ export function AuthButtons(props: AuthButtonsProps) {
   }
 
   if (isAuthenticated) {
-    return <LogoutButton />;
+    return (
+      <>
+        <div className="flex w-full justify-between">
+          <LogoutButton />
+          <Profile />
+        </div>
+      </>
+    );
   } else {
-    return <LoginButton />;
+    return (
+      <>
+        <div className="flex gap-2">
+          <LoginButton />
+          <SignUpButton />
+        </div>
+      </>
+    );
   }
 }
 

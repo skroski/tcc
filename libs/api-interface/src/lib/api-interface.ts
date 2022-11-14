@@ -26,9 +26,9 @@ export class ServicesService {
   };
 
   public async createService(data: any): Promise<any> {
-  
+
     try {
-      const response = await axios.post<ServiceProps[]>(API_URL + "services", data , {
+      const response = await axios.post<ServiceProps[]>(API_URL + "/services", data, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
       })
@@ -41,7 +41,14 @@ export class ServicesService {
 
   }
   public async deleteService(serviceId: number): Promise<any> {
-    const response = await axios.delete(API_URL + `/services/${serviceId}`, {method: 'DELETE'})
+    const response = await axios.delete(API_URL + `/services/${serviceId}`, { method: 'DELETE' })
+    return await response.data;
+  }
+  public async editService(data: any, serviceId: number): Promise<any> {
+    const response = await  axios.put(API_URL + `/services/${serviceId}`, data, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'}
+    })
     return await response.data;
 }
 }

@@ -20,8 +20,11 @@ export function Home() {
 
   return (
     <>
-      <section className="grid grid-cols-2">
+      <section className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 grid grid-cols-4 gap-4">
+      <div className="col-span-1">
         <UiSidebar />
+        </div>
+        <div className="col-span-3">
         <main>
           {service.map((s) => {
             return (
@@ -33,6 +36,7 @@ export function Home() {
           })}
           <p>{JSON.stringify(service)}</p>
         </main>
+        </div>
       </section>
       <div role="navigation">
         <ul>

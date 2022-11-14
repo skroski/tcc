@@ -5,15 +5,15 @@ import { UiHeader } from "@tcc/ui-header";
 import { UiSidebar } from "@tcc/ui-sidebar";
 
 import axios from "axios";
-import { API_URL, Service } from "@tcc/api-interface";
+import { API_URL, ServiceProps } from "@tcc/api-interface";
 //import { Services } from '@tcc/shared-types';
 
 export function App() {
-  const [service, setService] = useState<Service[]>([]);
+  const [service, setService] = useState<ServiceProps[]>([]);
   //const [apiResponse, setApiResponse] = useState({message: 'Loading...'});
 
   const getServices = useCallback(async () => {
-    const resp = await axios.get<Service[]>(API_URL + "services");
+    const resp = await axios.get<ServiceProps[]>(API_URL + "services");
     setService(resp.data);
     console.log(resp);
   }, []);
