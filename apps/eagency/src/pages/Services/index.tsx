@@ -4,8 +4,14 @@ import { ServiceProps, ServicesService } from "@tcc/api-interface";
 
 import { PencilIcon, TrashIcon } from "@heroicons/react/outline";
 import CreateService from "../../components/CreateService";
+import EditService from "../../components/EditService";
 
-export function Services() {
+interface IServices {
+  services: any[];
+  serviceEdited: Function;
+}
+
+export function Services({services,  serviceEdited}: IServices) {
   const [service, setService] = useState<ServiceProps[]>([]);
   const servicesService = new ServicesService();
 
@@ -81,9 +87,11 @@ export function Services() {
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right ">
                               <a
-                                className="flex justify-end text-green-500 hover:text-green-700"
+                                className="flex justify-end "
                                 href="#"
+                               
                               >
+                                 <EditService service={s} serviceEdited={serviceEdited}/>
                                 <PencilIcon
                                   className="h-6 w-6"
                                   aria-hidden="true"

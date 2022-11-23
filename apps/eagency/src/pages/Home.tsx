@@ -29,25 +29,18 @@ export function Home() {
           {service.map((s) => {
             return (
               <>
-                <h2 className="text-xl text-red-800">{s.name}</h2>
-                <h3>{s.price}</h3>
+                <h2 className="text-xl text-red-800 my-4" >{s.name}</h2>
+                <p className="text-sm">{s.excerpt}</p>
+                <h3 className="text-2xl">{s.price}</h3>
+                <hr className="py-4"/>
+
               </>
             );
           })}
-          <p>{JSON.stringify(service)}</p>
         </main>
         </div>
       </section>
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
+  
     </>
   );
 }
