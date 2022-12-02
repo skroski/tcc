@@ -6,14 +6,16 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
 model Post {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  slug     String    @unique
+  id       String     @id @default(auto()) @map("_id") @db.ObjectId
+  slug     String     @unique
   title    String
   body     String
   comments Comment[]
-  author   User      @relation(fields: [authorId], references: [id])
-  authorId String    @db.ObjectId
+  author   User       @relation(fields: [authorId], references: [id])
+  authorId String     @db.ObjectId
+  Services Services[]
 }
 
 // Comments contain a comment string and connect back to the post.
@@ -23,6 +25,13 @@ model Comment {
   post    Post   @relation(fields: [postId], references: [id])
   postId  String @db.ObjectId
   comment String
+}
+
+model Services {
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  service        Post   @relation(fields: [serviceId], references: [id])
+  serviceId      String @db.ObjectId
+  serviceComment String
 }
 
 model User {
