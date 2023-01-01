@@ -6,7 +6,8 @@
     "start": "node dist/apps/api/main.js",
     "build": "nx run-many --target=serve --projects=eagency,api --parallel=true",
     "dev": "nx run-many --target=serve --projects=eagency,api --parallel=true",
-    "test": "nx test"
+    "test": "nx test",
+    "postinstall": "remix setup node"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,9 @@
     "@nestjs/swagger": "6.1.2",
     "@nrwl/nx-cloud": "14.6.2",
     "@prisma/client": "^4.5.0",
+    "@remix-run/node": "^1.6.8",
+    "@remix-run/react": "^1.6.8",
+    "@remix-run/serve": "^1.6.8",
     "autoprefixer": "10.4.8",
     "bson": "^4.7.0",
     "class-transformer": "^0.5.1",
@@ -58,9 +62,12 @@
     "@nrwl/nest": "14.7.5",
     "@nrwl/node": "^14.7.5",
     "@nrwl/react": "^14.7.5",
+    "@nrwl/remix": "^14.7.0",
     "@nrwl/tao": "14.7.5",
     "@nrwl/web": "^14.7.5",
     "@nrwl/workspace": "14.7.5",
+    "@remix-run/dev": "^1.6.8",
+    "@remix-run/eslint-config": "^1.6.8",
     "@svgr/webpack": "^6.3.1",
     "@testing-library/react": "13.3.0",
     "@testing-library/react-hooks": "7.0.2",

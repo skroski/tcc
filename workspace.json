@@ -7,6 +7,7 @@
     "eagency": "apps/eagency",
     "eagency-e2e": "apps/eagency-e2e",
     "shared-types": "libs/shared-types",
+    "ui-eagency": "apps/ui-eagency",
     "ui-header": "libs/ui-header",
     "ui-sidebar": "libs/ui-sidebar"
   }
