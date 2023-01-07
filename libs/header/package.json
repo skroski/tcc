@@ -1,0 +1,6 @@
+{
+  "name": "@tcc/header",
+  "version": "0.0.1",
+  "main": "./dist/index.cjs.js",
+  "typings": "./dist/index.d.ts"
+}

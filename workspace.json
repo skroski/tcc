@@ -6,6 +6,7 @@
     "button": "libs/button",
     "eagency": "apps/eagency",
     "eagency-e2e": "apps/eagency-e2e",
+    "header": "libs/header",
     "shared-types": "libs/shared-types",
     "ui-eagency": "apps/ui-eagency",
     "ui-header": "libs/ui-header",
