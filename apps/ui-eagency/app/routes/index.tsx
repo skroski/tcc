@@ -1,35 +1,39 @@
-import { Header} from "@tcc/header";
-export default function Index() {
+import { Header } from "@tcc/header";
+import { Link, useLoaderData } from "@remix-run/react";
+import { json, LoaderFunction } from "@remix-run/node";
+
+
+
+
+export const loader: LoaderFunction = () => {
+  return fetch("https://eagencyapp.herokuapp.com/api/services");
+};
+
+
+const Index = () => {
+  const services: any = useLoaderData();
   return (
-   
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-    <Header></Header>
-      <h1>Welcome to Remix</h1>
+      <Header></Header>
+      <pre>{JSON.stringify(services)}</pre>
+      <h1>Posts</h1>
       <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
+        {services.map((service: any) => (
+          <li key={service._id}>
+            <h3>{service.name}</h3>
+            <Link
+              to={service.name}
+              className="text-blue-600 underline"
+            >
+              {service.excerpt}
+            </Link>
+          </li>
+        ))}
       </ul>
+
+    
     </div>
   );
 }
+
+export default Index;

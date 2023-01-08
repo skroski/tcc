@@ -17,6 +17,7 @@
         "tsConfig": "apps/eagency/tsconfig.app.json",
         "assets": ["apps/eagency/src/favicon.ico", "apps/eagency/src/assets"],
         "styles": [
+          "apps/ui-eagency/src/styles.scss",
           "apps/eagency/src/styles.scss",
           "apps/eagency/src/app/tailwind.css"
         ],

@@ -8,6 +8,10 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+export function links() {
+  return [{ rel: "stylesheet" }]
+}
+
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "New Remix App",
