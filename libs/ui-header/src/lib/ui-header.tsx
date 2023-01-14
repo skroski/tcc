@@ -7,8 +7,8 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import logotipo from "../assets/eagency-light.svg";
 const navigation = [
   { name: "Dashboard", href: "/", current: true },
-  { name: "Clientes", href: "/clientes", current: false },
-  { name: "Serviços", href: "/servico", current: false },
+  { name: "Clientes", href: "/clients", current: false },
+  { name: "Serviços", href: "/services", current: false },
   { name: "Orçamentos", href: "/budgets", current: false },
   { name: "Configurações", href: "#", current: false },
 ];

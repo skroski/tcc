@@ -32,7 +32,7 @@ export function Home() {
               <>
                 <h2 className="text-xl text-red-800 my-4" >{s.name}</h2>
                 <p className="text-sm">{s.excerpt}</p>
-                <CurrencyFormat className="text-2xl" value={s.price} displayType={'text'} thousandSeparator={'.'} decimalScale={2} decimalSeparator={'.'} suffix={',00'} prefix={'R$'} renderText={value => <div>{value}</div>} />
+                <CurrencyFormat className="text-2xl" value={s.price} displayType={'text'} decimalScale={2}  suffix={',00'} prefix={'R$'} renderText={value => <div>{value}</div>} />
                 <hr className="py-4"/>
 
               </>

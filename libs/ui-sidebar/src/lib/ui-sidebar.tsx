@@ -98,7 +98,7 @@ export function UiSidebar(props: UiSidebarProps) {
           dark:hover:bg-gray-700 dark:hover:text-gray-200
           hover:text-gray-700
         "
-            href="/servico"
+            href="/services"
           >
             <svg
               className="w-5 h-5"
@@ -142,7 +142,7 @@ export function UiSidebar(props: UiSidebarProps) {
           dark:hover:bg-gray-700 dark:hover:text-gray-200
           hover:text-gray-700
         "
-            href="/clientes"
+            href="/clients"
           >
             <svg
               className="w-5 h-5"

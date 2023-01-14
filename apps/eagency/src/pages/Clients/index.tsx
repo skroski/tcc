@@ -52,7 +52,7 @@ export function Clients() {
   }, []);
   return (
     <>
-      <h1 className="text-3xl">Serviços</h1>
+      <h1 className="text-3xl">Clientes</h1>
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit(handleCreateNewClient)}
@@ -64,11 +64,11 @@ export function Clients() {
                 htmlFor="task"
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               >
-                Título do Serviço
+                Nome do Cliente
               </label>
               <input
                 type="text"
-                placeholder="Digite o título do Serviço"
+                placeholder="Digite o nome do Cliente"
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               ></input>
             </div>
@@ -77,38 +77,25 @@ export function Clients() {
                 htmlFor="task"
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               >
-                Resumo
+                Email
               </label>
               <input
                 type="text"
-                placeholder="Digite o resumo:"
+                placeholder="Digite o email do Cliente"
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               ></input>
             </div>
-          </div>
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full px-3">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Descrição
-              </label>
-              <textarea
-                placeholder="Digite uma descrição:"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              ></textarea>
-            </div>
-          </div>
-          <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label
                 htmlFor="task"
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               >
-                Preço
+                Celular
               </label>
               <input
-                type="number"
-                placeholder="Valor"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                type="text"
+                placeholder="Digite o celular do Cliente"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               ></input>
             </div>
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -116,19 +103,87 @@ export function Clients() {
                 htmlFor="task"
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               >
-                Tipo
+                CPF
               </label>
-              <select
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                name="Tipo"
-              >
-                <option value="">Único</option>
-                <option value="">Recorrente</option>
-              </select>
+              <input
+                type="text"
+                placeholder="Digite o CPF do Cliente"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              ></input>
             </div>
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label
+                htmlFor="task"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              >
+                CNPJ
+              </label>
+              <input
+                type="text"
+                placeholder="Digite o CNPJ do Cliente"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              ></input>
+            </div>
+            
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label
+                htmlFor="task"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              >
+               CEP
+              </label>
+              <input
+                type="text"
+                placeholder="Digite o CEP do Cliente"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              ></input>
+            </div>
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label
+                htmlFor="task"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              >
+              Address
+              </label>
+              <input
+                type="text"
+                placeholder="Digite o endereço do Cliente"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              ></input>
+            </div>
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label
+                htmlFor="task"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              >
+              Budget
+              </label>
+              <input
+                type="text"
+                placeholder="Digite o endereço do Budget"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              ></input>
+            </div>
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label
+                htmlFor="task"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              >
+              Tipo de Cliente:
+              </label>
+              <input
+                type="text"
+                placeholder="Digite o tipo do cliente"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              ></input>
+            </div>
+            
+         
           </div>
+         
+       
           <button className="pointer border radius bg-green-300 border-green-600 p-3">
-            Inserir Serviço
+            Inserir Cliente
           </button>
         </div>
       </form>
@@ -150,7 +205,7 @@ export function Clients() {
                       scope="col"
                       className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                     >
-                      Nome Serviço
+                      Nome Cliente
                     </th>
                     <th
                       scope="col"

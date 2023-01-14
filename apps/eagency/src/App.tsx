@@ -11,7 +11,7 @@ export function App() {
       <UiHeader/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/servico" element={<Services />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/clients" element={<Clients />} />
       </Routes>
     </div>
