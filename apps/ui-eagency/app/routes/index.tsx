@@ -23,7 +23,7 @@ const Index = () => {
             <h3>{service.name}</h3>
             <Link
               to={service.name}
-              className="text-blue-600 underline"
+              className="text-blue-600 underline bg-yellow-100"
             >
               {service.excerpt}
             </Link>

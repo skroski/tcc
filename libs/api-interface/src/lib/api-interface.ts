@@ -16,8 +16,20 @@ export interface ServiceProps extends Document {
   price: number,
   type: string
 }
+export interface ClientProps extends Document {
+  _id: mongoose.Schema.Types.ObjectId,
+  name: string,
+  email: string,
+  mobile: string,
+  cpf: string,
+  cnpj: string,
+  razaosocial: string,
+  cep: string,
+  address: string,
+  budget: string,
+  typecustomer: string,
+}
 export class ServicesService {
-
   //const [apiResponse, setApiResponse] = useState({message: 'Loading...'});
   public async getAllServices(): Promise<any> {
     const response = await axios.get<ServiceProps[]>(API_URL + "/services");
@@ -46,6 +58,43 @@ export class ServicesService {
   }
   public async editService(data: any, serviceId: number): Promise<any> {
     const response = await  axios.put(API_URL + `/services/${serviceId}`, data, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'}
+    })
+    return await response.data;
+}
+}
+
+
+export class ClientsService {
+  //const [apiResponse, setApiResponse] = useState({message: 'Loading...'});
+  public async getAllClients(): Promise<any> {
+    const response = await axios.get<ClientProps[]>(API_URL + "/clients");
+    console.log(response.data)
+    return await response.data;
+  };
+
+  public async createClient(data: any): Promise<any> {
+
+    try {
+      const response = await axios.post<ClientProps[]>(API_URL + "/clients", data, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      console.log(response.data);
+      return await response.data;
+    }
+    catch (err) {
+      console.error(err);
+    }
+
+  }
+  public async deleteClient(clientId: number): Promise<any> {
+    const response = await axios.delete(API_URL + `/clients/${clientId}`, { method: 'DELETE' })
+    return await response.data;
+  }
+  public async editClient(data: any, clientId: number): Promise<any> {
+    const response = await  axios.put(API_URL + `/clients/${clientId}`, data, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'}
     })
