@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 import axios, { AxiosResponse } from "axios";
-import { API_URL, Client } from "@tcc/api-interface";
+import { API_URL, Client, ClientsService  } from "@tcc/api-interface";
 
 import { PencilIcon, TrashIcon } from "@heroicons/react/outline";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
@@ -10,6 +10,13 @@ import CreateClient from "../../components/CreateClient";
 
 export function Clients() {
   const [clients, setClients] = useState<Client[]>([]);
+  const clientsService = new ClientsService();
+
+  function deleteBudget(clientId: string) {
+    clientsService.deleteBudget(clientId).then((response) => {
+      console.log(response);
+    });
+  }
   const getClients: () => Promise<void> = useCallback(async () => {
     const resp: AxiosResponse<Client[]> = await axios.get<Client[]>(
       API_URL + "/Clients"
@@ -95,16 +102,16 @@ export function Clients() {
                               </a>
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right">
-                              <a
-                                className="flex justify-end text-red-500 hover:text-red-700"
-                                href="#"
+                            <button
+                                className="flex justify-end cursor-pointer text-red-500 hover:text-red-700"
+                                onClick={(e) => deleteClient(s._id)}
                               >
                                 <TrashIcon
                                   className="h-6 w-6"
                                   aria-hidden="true"
                                 />
                                 Deletar
-                              </a>
+                              </button>
                             </td>
                           </tr>
                         </tbody>

@@ -31,7 +31,7 @@ export default function CreateBudget() {
               Titulo do Orçamento
             </label>
             <input
-              {...register("name")}
+              {...register("title")}
               type="text"
               name="title"
               id="title"
@@ -44,10 +44,10 @@ export default function CreateBudget() {
               htmlFor="task"
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             >
-             Email
+            Service
             </label>
             <input
-              {...register("email")}
+              {...register("service")}
               type="text"
               name="service"
               id="service"
@@ -117,9 +117,7 @@ export default function CreateBudget() {
           </div>
          
         </div>
-    
         <div className="flex flex-wrap -mx-3 mb-6">
-       
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
               htmlFor="task"
@@ -132,8 +130,8 @@ export default function CreateBudget() {
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               name="Tipo"
             >
-              <option value="">Contratante</option>
-              <option value="">Contratada</option>
+              <option value="">Fee Mensal</option>
+              <option value="">Projeto</option>
             </select>
           </div>
          

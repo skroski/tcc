@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 import axios, { AxiosResponse } from "axios";
-import { API_URL, Budget } from "@tcc/api-interface";
+import { API_URL, Budget, BudgetsService } from "@tcc/api-interface";
 
 import { PencilIcon, TrashIcon } from "@heroicons/react/outline";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
@@ -10,6 +10,13 @@ import CreateBudget from "../../components/CreateBudget";
 
 export function Budgets() {
   const [budgets, setBudgets] = useState<Budget[]>([]);
+  const budgetsService = new BudgetsService();
+
+  function deleteBudget(budgetId: string) {
+    budgetsService.deleteBudget(budgetId).then((response) => {
+      console.log(response);
+    });
+  }
   const getBudgets: () => Promise<void> = useCallback(async () => {
     const resp: AxiosResponse<Budget[]> = await axios.get<Budget[]>(
       API_URL + "/Budgets"
@@ -46,7 +53,7 @@ export function Budgets() {
                         scope="col"
                         className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                       >
-                        Nome Budgete
+                        Título Budget
                       </th>
                       <th
                         scope="col"
@@ -95,16 +102,16 @@ export function Budgets() {
                               </a>
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right">
-                              <a
-                                className="flex justify-end text-red-500 hover:text-red-700"
-                                href="#"
+                            <button
+                                className="flex justify-end cursor-pointer text-red-500 hover:text-red-700"
+                                onClick={(e) => deleteBudget(s._id)}
                               >
                                 <TrashIcon
                                   className="h-6 w-6"
                                   aria-hidden="true"
                                 />
                                 Deletar
-                              </a>
+                              </button>
                             </td>
                           </tr>
                         </tbody>
