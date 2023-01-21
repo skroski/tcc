@@ -1,34 +1,34 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 import axios, { AxiosResponse } from "axios";
-import { API_URL, Client } from "@tcc/api-interface";
+import { API_URL, Budget } from "@tcc/api-interface";
 
 import { PencilIcon, TrashIcon } from "@heroicons/react/outline";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import Loading from "../../../../../libs/ui-header/src/lib/loading/loading";
-import CreateClient from "../../components/CreateClient";
+import CreateBudget from "../../components/CreateBudget";
 
-export function Clients() {
-  const [clients, setClients] = useState<Client[]>([]);
-  const getClients: () => Promise<void> = useCallback(async () => {
-    const resp: AxiosResponse<Client[]> = await axios.get<Client[]>(
-      API_URL + "/Clients"
+export function Budgets() {
+  const [budgets, setBudgets] = useState<Budget[]>([]);
+  const getBudgets: () => Promise<void> = useCallback(async () => {
+    const resp: AxiosResponse<Budget[]> = await axios.get<Budget[]>(
+      API_URL + "/Budgets"
     );
 
-    setClients(resp.data);
+    setBudgets(resp.data);
     console.log(resp);
   }, []);
 
   useEffect(() => {
-    getClients();
+    getBudgets();
   }, []);
   return (
     <>
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="text-3xl font-bold text-purple-800 py-5">
-          Cadastro de Clientes
+          Cadastro de Budget
         </div>
-        <CreateClient />
+        <CreateBudget />
         <div className="flex flex-col">
           <div className="overflow-x-auto">
             <div className="p-1.5 w-full inline-block align-middle">
@@ -46,7 +46,7 @@ export function Clients() {
                         scope="col"
                         className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                       >
-                        Nome Cliente
+                        Nome Budgete
                       </th>
                       <th
                         scope="col"
@@ -68,7 +68,7 @@ export function Clients() {
                       </th>
                     </tr>
                   </thead>
-                  {clients.map((s) => {
+                  {budgets.map((s) => {
                     return (
                       <>
                         <tbody className="divide-y divide-gray-200">
@@ -120,6 +120,6 @@ export function Clients() {
     </>
   );
 }
-export default withAuthenticationRequired(Clients, {
+export default withAuthenticationRequired(Budgets, {
   onRedirecting: () => <Loading />,
 });

@@ -1,25 +1,25 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { ClientsService} from "@tcc/api-interface";
+import { BudgetsService} from "@tcc/api-interface";
 
 
-export default function CreateService() {
+export default function CreateBudget() {
   const { register, handleSubmit } = useForm();
-  const servicesClient= new ClientsService();
+  const servicesBudget = new BudgetsService();
 
-  const handleCreateNewClient = (data: any, e: any) => {
+  const handleCreateNewBudget = (data: any, e: any) => {
 
-    servicesClient.createClient(data).then((response) => {
+    servicesBudget.createBudget(data).then((response) => {
       console.log(response.data);
       e.target.reset();
-      alert("Cliente criado com sucesso!");
+      alert("Budget criado com sucesso!");
     });
   };
 
   return (
     <form
       className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-      onSubmit={handleSubmit(handleCreateNewClient)}
+      onSubmit={handleSubmit(handleCreateNewBudget)}
     >
       <div className="mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 ">
         <div className="flex flex-wrap -mx-3 mb-6">
@@ -28,15 +28,15 @@ export default function CreateService() {
               htmlFor="task"
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             >
-              Nome do Cliente
+              Titulo do Orçamento
             </label>
             <input
               {...register("name")}
               type="text"
-              name="name"
-              id="name"
+              name="title"
+              id="title"
               placeholder="Digite o título do Serviço"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             ></input>
           </div>
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -48,10 +48,10 @@ export default function CreateService() {
             </label>
             <input
               {...register("email")}
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Digite o email do Cliente"
+              type="text"
+              name="service"
+              id="service"
+              placeholder="Digite o service do Budget"
               className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             ></input>
           </div>
@@ -60,13 +60,13 @@ export default function CreateService() {
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-              Telefone
+              Resumo
             </label>
             <input
-              {...register("mobile")}
+              {...register("excerpt")}
               type="text"
-              name="name"
-              id="name"
+              name="excerpt"
+              id="excerpt"
               placeholder="Digite o título do Serviço"
               className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             ></input>
@@ -76,12 +76,12 @@ export default function CreateService() {
               htmlFor="task"
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             >
-              CPF
+              Description
             </label>
             <input
-              {...register("cpf")}
+              {...register("description")}
               type="number"
-              placeholder="Digite um CPF Válido"
+              placeholder="Digite uma Descrição Válida"
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             ></input>
           </div>
@@ -92,12 +92,12 @@ export default function CreateService() {
               htmlFor="task"
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             >
-              CNPJ
+              Total de Horas
             </label>
             <input
-              {...register("cnpj")}
+              {...register("totalhours")}
               type="number"
-              placeholder="Digite um CNPJ Válido"
+              placeholder="Digite um Total de Horas Válido"
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             ></input>
           </div>
@@ -106,12 +106,12 @@ export default function CreateService() {
               htmlFor="task"
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             >
-              Razão Social
+             Valor Total:
             </label>
             <input
-              {...register("razaosocial")}
+              {...register("totalprice")}
               type="text"
-              placeholder="Digite a Razão Social"
+              placeholder="Digite o preço total"
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             ></input>
           </div>
@@ -119,61 +119,16 @@ export default function CreateService() {
         </div>
     
         <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              htmlFor="cep"
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            >
-              CEP
-            </label>
-            <input
-              {...register("cep")}
-              type="number"
-              placeholder="Digite um CEP Válido"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            ></input>
-          </div>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              htmlFor="address"
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            >
-              Address
-            </label>
-            <input
-              {...register("address")}
-              type="number"
-              placeholder="Digite um Endereço Válido"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            ></input>
-          </div>
-         
-        </div>
        
-        <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
               htmlFor="task"
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             >
-              Budget
-            </label>
-            <input
-              {...register("budget")}
-              type="number"
-              placeholder="Digite um Budget Válido"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            ></input>
-          </div>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              htmlFor="task"
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            >
-              Tipo de Cliente
+              Tipo de Budget
             </label>
             <select
-              {...register("typecustomer")}
+              {...register("type")}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               name="Tipo"
             >
@@ -187,7 +142,7 @@ export default function CreateService() {
           type="submit"
           className="cursor-pointer border-2 rounded text-green-600 border-green-600 p-3"
         >
-          Inserir Cliente
+          Inserir Budgete
         </button>
       </div>
     </form>

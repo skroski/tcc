@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 
 import { UiSidebar } from "@tcc/ui-sidebar";
-
 import { ServiceProps, ServicesService } from "@tcc/api-interface";
 import * as CurrencyFormat from 'react-currency-format';
 import React from "react";
-//import { Services } from '@tcc/shared-types';
 
 export function Home() {
   const [service, setService] = useState<ServiceProps[]>([]);

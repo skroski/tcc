@@ -18,8 +18,7 @@
         "assets": ["apps/eagency/src/favicon.ico", "apps/eagency/src/assets"],
         "styles": [
           "apps/eagency/src/styles.scss",
-          "apps/eagency/src/app/tailwind.css",
-          "apps/ui-eagency/src/app/tailwind.css"
+          "apps/eagency/src/app/tailwind.css"
         ],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
