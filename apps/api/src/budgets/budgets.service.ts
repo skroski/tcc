@@ -16,7 +16,7 @@ export class BudgetsService {
     const allBudgets = await this.budgetRepository.getAllBudgets();
 
     if (!allBudgets.length)
-      throw new BadRequestException('Não temos serviços registrados');
+      throw new BadRequestException('Não temos budgets registrados');
     else
       return allBudgets;
   }

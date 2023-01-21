@@ -77,10 +77,10 @@ export function Budgets() {
                               1
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                              {s.name}
+                              {s.title}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                              {s.typecustomer}
+                              {s.type}
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right ">
                               <a
