@@ -21,6 +21,7 @@ const Index = () => {
         {services.map((service: any) => (
           <li key={service._id}>
             <h3>{service.name}</h3>
+            
             <Link
               to={service.name}
               className="text-blue-600 underline bg-yellow-100"
@@ -30,6 +31,7 @@ const Index = () => {
           </li>
         ))}
       </ul>
+      <Link to="/services"  className="text-blue-600 underline bg-yellow-100">Services</Link>
 
     
     </div>
