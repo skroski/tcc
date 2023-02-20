@@ -1,5 +1,20 @@
 
 
+# Para iniciar a API
+nx serve api
+
+# Para iniciar o Admin E-Agency
+nx serve e-agency
+
+# Para iniciar a Interface
+cd apps
+cd ui-eagency
+npx remix dev
+
+ou 
+
+nx serve ui-eagency
+
 # NxTcc
 
 This project was generated using [Nx](https://nx.dev).
