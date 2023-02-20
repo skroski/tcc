@@ -2,3 +2,4 @@
 build
 public/build
 .env
+yarn.lock
