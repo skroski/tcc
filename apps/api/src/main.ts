@@ -22,7 +22,7 @@ async function bootstrap() {
   
   await app.listen(port);
   Logger.log(
-    `🚀 Application is running on: https://eagencyapp.herokuapp.com/api/${globalPrefix}`
+    `🚀 Application is running on: http://localhost:3333/api/${globalPrefix}`
   );
   
 }

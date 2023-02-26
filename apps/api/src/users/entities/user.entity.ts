@@ -1,14 +1,19 @@
 import { Prop, Schema } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
-export type UserDocument = User & Document
+export type UserDocument = UserEntity & Document
 @Schema()
-export class User {
+export class UserEntity {
     @Prop()
-    user: string;
+    name: string;
     @Prop()
     password: string;
     @Prop()
     email: string;
+    constructor(user?: Partial<UserEntity>) {
+        this.name = user?.name;
+        this.email = user?.email;
+        this.password = user?.password;
+    }
 
 }

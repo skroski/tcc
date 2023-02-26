@@ -29,5 +29,5 @@ export default function ClientsRoute(){
       );
 }
 export const loader: LoaderFunction = () => {
-    return fetch("https://eagencyapp.herokuapp.com/api/clients");
+    return fetch("http://localhost:3333/api/clients");
   };
