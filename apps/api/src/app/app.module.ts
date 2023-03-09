@@ -24,8 +24,4 @@ import { UsersModule } from '../app/users/users.module';
 })
   
 export class AppModule {}
- //MongooseModule.forRoot('mongodb://127.0.0.1:27017/tcc'),
-  //        BudgetsModule,
-  //      ServicesModule, 
-  //      UsersModule,
-  //      ClientsModule,
+ //MongooseModule.forRoot('mongodb://127.0.0.1:27017/tcc')
