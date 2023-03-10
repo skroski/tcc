@@ -12,7 +12,7 @@ import { UsersModule } from '../app/users/users.module';
         imports: [ConfigModule.forRoot()],
         inject: [ConfigService],
         useFactory: async (config: ConfigService) => ({
-          uri: config.get<string>('DATABASE_CONNECTION'),
+          uri: config.get<string>('MONGODB_URI'),
       })
     }),
     BudgetsModule, 
