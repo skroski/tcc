@@ -8,7 +8,7 @@
     "yarn": "1.22.0"
   },
   "scripts": {
-    "start": "node dist/apps/api/main.js"
+    "start": "node dist/apps/api/main"
    },
   "private": true,
   "dependencies": {
