@@ -6,14 +6,8 @@
     "node" : "16.15.1" 
   },
   "scripts": {
-    "start": "node dist/apps/api/main.js",
-    "build": "nx run-many --target=serve --projects=eagency,api --parallel=true && npm run build:css",
-    "build:css": "tailwindcss -m -i ./styles/app.scss -o app/styles/app.scss",
-    "dev": "nx run-many --target=serve --projects=eagency,api --parallel=true && npm run dev:css",
-    "dev:css": "tailwindcss -w -i ./styles/app.scss -o app/styles/app.scss",
-    "test": "nx test",
-    "postinstall": "remix setup node"
-  },
+    "start": "node dist/apps/api/main.js"
+   },
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.12.0",
