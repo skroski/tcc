@@ -16,8 +16,8 @@ const budgets_module_1 = __webpack_require__("./apps/api/src/app/budgets/budgets
 const clients_module_1 = __webpack_require__("./apps/api/src/app/clients/clients.module.ts");
 const services_module_1 = __webpack_require__("./apps/api/src/app/services/services.module.ts");
 const users_module_1 = __webpack_require__("./apps/api/src/app/users/users.module.ts");
-const serve_static_1 = __webpack_require__("@nestjs/serve-static"); // <- INSERT LINE
-const path_1 = __webpack_require__("path"); // <- INSERT LINE
+const serve_static_1 = __webpack_require__("@nestjs/serve-static");
+const path_1 = __webpack_require__("path");
 let AppModule = class AppModule {
 };
 AppModule = tslib_1.__decorate([

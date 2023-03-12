@@ -5,8 +5,8 @@ import { BudgetsModule } from '../app/budgets/budgets.module';
 import { ClientsModule } from '../app/clients/clients.module';
 import { ServicesModule } from '../app/services/services.module';
 import { UsersModule } from '../app/users/users.module';
-import { ServeStaticModule } from '@nestjs/serve-static'; // <- INSERT LINE
-import { join } from 'path'; // <- INSERT LINE
+import { ServeStaticModule } from '@nestjs/serve-static'; 
+import { join } from 'path';
 
 @Module({
   imports: [ 
