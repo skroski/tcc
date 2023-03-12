@@ -2,7 +2,7 @@
 export interface HeaderProps {}
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import logotipo from "../assets/eagency-light.svg";
+import logotipo from "../api-interface/assets/eagency-light.svg";
 
 
 
@@ -13,9 +13,7 @@ function classNames(...classes: string[]) {
 export function Header(props: HeaderProps) {
   return (
       <>
-      <h1 className="text-red-500 bg-yellow-400">Welcome to Header! test3</h1>
-      <div className="bg-gray-800 py-2">
-    
+      <div className="bg-purple-900 py-2">
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-2">
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -29,11 +27,17 @@ export function Header(props: HeaderProps) {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                Imagem
+                <img className="w-36" src="https://eagencyapp.herokuapp.com/eagency-light.520b300.svg" alt="Logo E-agency" /> 
+     
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
-             TEstes
+                    <ul className="flex mt-2">
+                      <li ><a className="px-2  text-purple-300" href="home">Home</a></li>
+                      <li><a className="px-2 text-purple-300" href="budgets">Orçamentos</a></li>
+                      <li><a className="px-2 text-purple-300" href="services">Serviços</a></li>
+                      <li><a className="px-2 text-purple-300" href="clients">Meus Matchs</a></li>
+                    </ul>
                   </div>
                 </div>
               </div>

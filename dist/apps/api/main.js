@@ -78,6 +78,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.BudgetsController = void 0;
 const tslib_1 = __webpack_require__("tslib");
 const common_1 = __webpack_require__("@nestjs/common");
+const swagger_1 = __webpack_require__("@nestjs/swagger");
 const budgets_service_1 = __webpack_require__("./apps/api/src/app/budgets/budgets.service.ts");
 const create_budget_dto_1 = __webpack_require__("./apps/api/src/app/budgets/dto/create-budget.dto.ts");
 let BudgetsController = class BudgetsController {
@@ -108,6 +109,9 @@ let BudgetsController = class BudgetsController {
 };
 tslib_1.__decorate([
     (0, common_1.Post)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Criação de Orçamento' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Insere um Orçamento' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Orçamento não foi inserido.' }),
     tslib_1.__param(0, (0, common_1.Body)()),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [typeof (_a = typeof create_budget_dto_1.CreateBudgetDto !== "undefined" && create_budget_dto_1.CreateBudgetDto) === "function" ? _a : Object]),
@@ -115,12 +119,18 @@ tslib_1.__decorate([
 ], BudgetsController.prototype, "create", null);
 tslib_1.__decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Consulta de todos os Orçamentos' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Consulta de todos os Orçamentos.' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Orçamentos não encontrados.' }),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", []),
     tslib_1.__metadata("design:returntype", typeof (_b = typeof Promise !== "undefined" && Promise) === "function" ? _b : Object)
 ], BudgetsController.prototype, "findAll", null);
 tslib_1.__decorate([
     (0, common_1.Get)(':budgetID'),
+    (0, swagger_1.ApiOperation)({ summary: 'Consulta de Orçamento por ID' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Consulta de Orçamento por ID.' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Orçamento não encontrado.' }),
     tslib_1.__param(0, (0, common_1.Param)('budgetID')),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
@@ -128,6 +138,9 @@ tslib_1.__decorate([
 ], BudgetsController.prototype, "findOne", null);
 tslib_1.__decorate([
     (0, common_1.Patch)(':budgetID'),
+    (0, swagger_1.ApiOperation)({ summary: 'Alteração de Orçamento' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Alteração de Orçamento .' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Não foi possível alterar o Orçamento.' }),
     tslib_1.__param(0, (0, common_1.Param)('budgetID')),
     tslib_1.__param(1, (0, common_1.Body)()),
     tslib_1.__metadata("design:type", Function),
@@ -136,6 +149,9 @@ tslib_1.__decorate([
 ], BudgetsController.prototype, "update", null);
 tslib_1.__decorate([
     (0, common_1.Delete)(':budgetID'),
+    (0, swagger_1.ApiOperation)({ summary: 'Exlusão de Orçamento' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Exclusão de Orçamento.' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Orçamento não exlcuido.' }),
     tslib_1.__param(0, (0, common_1.Param)('budgetID')),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
@@ -143,6 +159,7 @@ tslib_1.__decorate([
 ], BudgetsController.prototype, "remove", null);
 BudgetsController = tslib_1.__decorate([
     (0, common_1.Controller)('budgets'),
+    (0, swagger_1.ApiTags)('budgets'),
     tslib_1.__metadata("design:paramtypes", [typeof (_e = typeof budgets_service_1.BudgetsService !== "undefined" && budgets_service_1.BudgetsService) === "function" ? _e : Object])
 ], BudgetsController);
 exports.BudgetsController = BudgetsController;
@@ -268,6 +285,7 @@ const class_transformer_1 = __webpack_require__("class-transformer");
 //import { UsersDTO } from "../../users/dto/create-user.dto";
 //import { CreateClientDTO } from "../../clients/dto/create-client.dto";
 const create_service_dto_1 = __webpack_require__("./apps/api/src/app/services/dto/create-service.dto.ts");
+const swagger_1 = __webpack_require__("@nestjs/swagger");
 class CreateBudgetDto {
 }
 tslib_1.__decorate([
@@ -275,6 +293,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(100),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateBudgetDto.prototype, "name", void 0);
 tslib_1.__decorate([
@@ -282,13 +301,17 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(20),
     (0, class_validator_1.MaxLength)(150),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateBudgetDto.prototype, "excerpt", void 0);
 tslib_1.__decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.ValidateNested)({ each: true }),
     (0, class_transformer_1.Type)(() => create_service_dto_1.ServiceDTO),
-    (0, class_validator_1.ArrayMinSize)(1),
+    (0, class_validator_1.ArrayMinSize)(1)
+    //@IsNotEmptyObject({ each : true})
+    ,
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", Array)
 ], CreateBudgetDto.prototype, "services", void 0);
 tslib_1.__decorate([
@@ -296,12 +319,14 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(50),
     (0, class_validator_1.MaxLength)(250),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateBudgetDto.prototype, "description", void 0);
 tslib_1.__decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsPositive)(),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", Number)
 ], CreateBudgetDto.prototype, "price", void 0);
 tslib_1.__decorate([
@@ -309,6 +334,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(30),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateBudgetDto.prototype, "type", void 0);
 exports.CreateBudgetDto = CreateBudgetDto;
@@ -398,6 +424,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ClientsController = void 0;
 const tslib_1 = __webpack_require__("tslib");
 const common_1 = __webpack_require__("@nestjs/common");
+const swagger_1 = __webpack_require__("@nestjs/swagger");
 const clients_service_1 = __webpack_require__("./apps/api/src/app/clients/clients.service.ts");
 const create_client_dto_1 = __webpack_require__("./apps/api/src/app/clients/dto/create-client.dto.ts");
 const update_client_dto_1 = __webpack_require__("./apps/api/src/app/clients/dto/update-client.dto.ts");
@@ -423,6 +450,9 @@ let ClientsController = class ClientsController {
 };
 tslib_1.__decorate([
     (0, common_1.Post)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Criação de Cliente' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Insere um Cliente' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Cliente não foi inserido.' }),
     tslib_1.__param(0, (0, common_1.Body)()),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [typeof (_a = typeof create_client_dto_1.CreateClientDTO !== "undefined" && create_client_dto_1.CreateClientDTO) === "function" ? _a : Object]),
@@ -430,12 +460,18 @@ tslib_1.__decorate([
 ], ClientsController.prototype, "create", null);
 tslib_1.__decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Consulta de todos os Clientes' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Consulta de todos os Clientes.' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Clientes não encontrados.' }),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", []),
     tslib_1.__metadata("design:returntype", void 0)
 ], ClientsController.prototype, "findAll", null);
 tslib_1.__decorate([
     (0, common_1.Get)(':id'),
+    (0, swagger_1.ApiOperation)({ summary: 'Consulta de Cliente por ID' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Consulta de Cliente por ID.' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Cliente não encontrado.' }),
     tslib_1.__param(0, (0, common_1.Param)('id')),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
@@ -443,6 +479,9 @@ tslib_1.__decorate([
 ], ClientsController.prototype, "findOne", null);
 tslib_1.__decorate([
     (0, common_1.Patch)(':id'),
+    (0, swagger_1.ApiOperation)({ summary: 'Alteração de Cliente' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Alteração de Cliente .' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Não foi possível alterar o Cliente.' }),
     tslib_1.__param(0, (0, common_1.Param)('id')),
     tslib_1.__param(1, (0, common_1.Body)()),
     tslib_1.__metadata("design:type", Function),
@@ -451,6 +490,9 @@ tslib_1.__decorate([
 ], ClientsController.prototype, "update", null);
 tslib_1.__decorate([
     (0, common_1.Delete)(':id'),
+    (0, swagger_1.ApiOperation)({ summary: 'Exlusão de Cliente' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Exclusão de Cliente.' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Cliente não exlcuido.' }),
     tslib_1.__param(0, (0, common_1.Param)('id')),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
@@ -458,6 +500,7 @@ tslib_1.__decorate([
 ], ClientsController.prototype, "remove", null);
 ClientsController = tslib_1.__decorate([
     (0, common_1.Controller)('clients'),
+    (0, swagger_1.ApiTags)('clients'),
     tslib_1.__metadata("design:paramtypes", [typeof (_c = typeof clients_service_1.ClientsService !== "undefined" && clients_service_1.ClientsService) === "function" ? _c : Object])
 ], ClientsController);
 exports.ClientsController = ClientsController;
@@ -549,6 +592,7 @@ exports.ClientsService = ClientsService;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CreateClientDTO = void 0;
 const tslib_1 = __webpack_require__("tslib");
+const swagger_1 = __webpack_require__("@nestjs/swagger");
 const class_validator_1 = __webpack_require__("class-validator");
 class CreateClientDTO {
 }
@@ -557,6 +601,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(100),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "user", void 0);
 tslib_1.__decorate([
@@ -564,12 +609,14 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(100),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "name", void 0);
 tslib_1.__decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsEmail)(),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "email", void 0);
 tslib_1.__decorate([
@@ -577,6 +624,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(100),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "mobile", void 0);
 tslib_1.__decorate([
@@ -584,6 +632,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(100),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "cpf", void 0);
 tslib_1.__decorate([
@@ -592,6 +641,7 @@ tslib_1.__decorate([
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(200),
     (0, class_validator_1.IsEmail)(),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "cnpj", void 0);
 tslib_1.__decorate([
@@ -599,6 +649,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(200),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "razaosocial", void 0);
 tslib_1.__decorate([
@@ -606,6 +657,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(100),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "cep", void 0);
 tslib_1.__decorate([
@@ -613,6 +665,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(250),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "address", void 0);
 tslib_1.__decorate([
@@ -620,6 +673,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(100),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "budget", void 0);
 tslib_1.__decorate([
@@ -627,6 +681,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(100),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], CreateClientDTO.prototype, "typecustomer", void 0);
 exports.CreateClientDTO = CreateClientDTO;
@@ -745,6 +800,7 @@ const tslib_1 = __webpack_require__("tslib");
 const class_validator_1 = __webpack_require__("class-validator");
 const create_user_dto_1 = __webpack_require__("./apps/api/src/app/users/dto/create-user.dto.ts");
 const class_transformer_1 = __webpack_require__("class-transformer");
+const swagger_1 = __webpack_require__("@nestjs/swagger");
 class ServiceDTO {
 }
 tslib_1.__decorate([
@@ -752,6 +808,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(100),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], ServiceDTO.prototype, "name", void 0);
 tslib_1.__decorate([
@@ -759,13 +816,17 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(20),
     (0, class_validator_1.MaxLength)(150),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], ServiceDTO.prototype, "excerpt", void 0);
 tslib_1.__decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.ValidateNested)({ each: true }),
     (0, class_transformer_1.Type)(() => create_user_dto_1.UsersDTO),
-    (0, class_validator_1.ArrayMinSize)(1),
+    (0, class_validator_1.ArrayMinSize)(1)
+    //@IsNotEmptyObject({ each : true})
+    ,
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", Array)
 ], ServiceDTO.prototype, "users", void 0);
 tslib_1.__decorate([
@@ -773,12 +834,14 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(50),
     (0, class_validator_1.MaxLength)(250),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], ServiceDTO.prototype, "description", void 0);
 tslib_1.__decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsPositive)(),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", Number)
 ], ServiceDTO.prototype, "price", void 0);
 tslib_1.__decorate([
@@ -786,6 +849,7 @@ tslib_1.__decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(2),
     (0, class_validator_1.MaxLength)(30),
+    (0, swagger_1.ApiProperty)(),
     tslib_1.__metadata("design:type", String)
 ], ServiceDTO.prototype, "type", void 0);
 exports.ServiceDTO = ServiceDTO;
@@ -901,6 +965,7 @@ const tslib_1 = __webpack_require__("tslib");
 const common_1 = __webpack_require__("@nestjs/common");
 const services_service_1 = __webpack_require__("./apps/api/src/app/services/services.service.ts");
 const create_service_dto_1 = __webpack_require__("./apps/api/src/app/services/dto/create-service.dto.ts");
+const swagger_1 = __webpack_require__("@nestjs/swagger");
 let ServicesController = class ServicesController {
     constructor(servicesService) {
         this.servicesService = servicesService;
@@ -934,6 +999,9 @@ let ServicesController = class ServicesController {
 };
 tslib_1.__decorate([
     (0, common_1.Post)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Criação de serviço' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Insere um serviço' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Serviço não foi inserido.' }),
     tslib_1.__param(0, (0, common_1.Body)()),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [typeof (_a = typeof create_service_dto_1.ServiceDTO !== "undefined" && create_service_dto_1.ServiceDTO) === "function" ? _a : Object]),
@@ -941,12 +1009,18 @@ tslib_1.__decorate([
 ], ServicesController.prototype, "create", null);
 tslib_1.__decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Consulta de todos os serviços' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Consulta de todos os serviços.' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Serviços não encontrados.' }),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", []),
     tslib_1.__metadata("design:returntype", typeof (_b = typeof Promise !== "undefined" && Promise) === "function" ? _b : Object)
 ], ServicesController.prototype, "findAll", null);
 tslib_1.__decorate([
     (0, common_1.Get)(':serviceID'),
+    (0, swagger_1.ApiOperation)({ summary: 'Consulta de serviço por ID' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Consulta de serviço por ID.' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Serviço não encontrado.' }),
     tslib_1.__param(0, (0, common_1.Param)('serviceID')),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
@@ -954,6 +1028,9 @@ tslib_1.__decorate([
 ], ServicesController.prototype, "findOne", null);
 tslib_1.__decorate([
     (0, common_1.Get)('users/:userName'),
+    (0, swagger_1.ApiOperation)({ summary: 'Consulta de serviço por Usuário' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Consulta de serviço por Usuário.' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Serviço não encontrado.' }),
     tslib_1.__param(0, (0, common_1.Param)('userName')),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
@@ -961,6 +1038,9 @@ tslib_1.__decorate([
 ], ServicesController.prototype, "getServicesByUserName", null);
 tslib_1.__decorate([
     (0, common_1.Patch)(':serviceID'),
+    (0, swagger_1.ApiOperation)({ summary: 'Alteração de serviço' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Alteração de serviço .' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Não foi possível alterar o Serviço.' }),
     tslib_1.__param(0, (0, common_1.Param)('serviceID')),
     tslib_1.__param(1, (0, common_1.Body)()),
     tslib_1.__metadata("design:type", Function),
@@ -969,6 +1049,9 @@ tslib_1.__decorate([
 ], ServicesController.prototype, "update", null);
 tslib_1.__decorate([
     (0, common_1.Delete)(':serviceID'),
+    (0, swagger_1.ApiOperation)({ summary: 'Exlusão de Serviço' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Exclusão de Serviço.' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'Serviço não exlcuido.' }),
     tslib_1.__param(0, (0, common_1.Param)('serviceID')),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
@@ -976,6 +1059,7 @@ tslib_1.__decorate([
 ], ServicesController.prototype, "remove", null);
 ServicesController = tslib_1.__decorate([
     (0, common_1.Controller)('services'),
+    (0, swagger_1.ApiTags)('services'),
     tslib_1.__metadata("design:paramtypes", [typeof (_e = typeof services_service_1.ServicesService !== "undefined" && services_service_1.ServicesService) === "function" ? _e : Object])
 ], ServicesController);
 exports.ServicesController = ServicesController;
@@ -1515,7 +1599,7 @@ function bootstrap() {
         app.setGlobalPrefix(globalPrefix);
         const port = process.env.PORT || 3333;
         yield app.listen(port);
-        common_1.Logger.log(`🚀 Application is running on: https://eagencyapp.herokuapp.com/${globalPrefix}`);
+        common_1.Logger.log(`🚀 Application is running on: http://eagencyapp.herokuapp.com/${globalPrefix}`);
     });
 }
 bootstrap();
