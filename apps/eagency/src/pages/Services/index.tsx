@@ -17,7 +17,7 @@ export function Services({services,  serviceEdited}: IServices) {
 
   function deleteService(serviceId: string) {
     servicesService.deleteService(serviceId).then((response) => {
-      console.log(response);
+      alert("Serviço excluído com sucesso!");
     });
   }
 
@@ -86,18 +86,9 @@ export function Services({services,  serviceEdited}: IServices) {
                               {s.price}
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right ">
-                              <a
-                                className="flex justify-end "
-                                href="#"
-                               
-                              >
+                          
                                  <EditService service={s} serviceEdited={serviceEdited}/>
-                                <PencilIcon
-                                  className="h-6 w-6"
-                                  aria-hidden="true"
-                                />
-                                Editar
-                              </a>
+                               
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right">
                               <button

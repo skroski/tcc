@@ -444,8 +444,8 @@ let ClientsController = class ClientsController {
     update(id, updateClientDto) {
         return this.clientsService.update(id, updateClientDto);
     }
-    remove(id) {
-        return this.clientsService.remove(id);
+    remove(clientID) {
+        return this.clientsService.remove(clientID);
     }
 };
 tslib_1.__decorate([
@@ -493,7 +493,7 @@ tslib_1.__decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Exlusão de Cliente' }),
     (0, swagger_1.ApiResponse)({ status: 200, description: 'Exclusão de Cliente.' }),
     (0, swagger_1.ApiResponse)({ status: 404, description: 'Cliente não exlcuido.' }),
-    tslib_1.__param(0, (0, common_1.Param)('id')),
+    tslib_1.__param(0, (0, common_1.Param)('clientID')),
     tslib_1.__metadata("design:type", Function),
     tslib_1.__metadata("design:paramtypes", [String]),
     tslib_1.__metadata("design:returntype", void 0)

@@ -45,7 +45,8 @@ export class ClientsController {
   @ApiOperation({ summary: 'Exlusão de Cliente' })
   @ApiResponse({ status: 200, description: 'Exclusão de Cliente.' })
   @ApiResponse({ status: 404, description: 'Cliente não exlcuido.' })
-  remove(@Param('id') id: string) {
-    return this.clientsService.remove(id);
+  remove(@Param('clientID') clientID: string) {
+    return this.clientsService.remove(clientID);
   }
+  
 }

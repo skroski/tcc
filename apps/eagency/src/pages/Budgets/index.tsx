@@ -14,7 +14,7 @@ export function Budgets() {
 
   function deleteBudget(budgetId: string) {
     budgetsService.deleteBudget(budgetId).then((response) => {
-      console.log(response);
+      alert("Orçamento excluído com sucesso!");
     });
   }
   const getBudgets: () => Promise<void> = useCallback(async () => {
@@ -81,7 +81,7 @@ export function Budgets() {
                         <tbody className="divide-y divide-gray-200">
                           <tr>
                             <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                              1
+                              {s._id}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                               {s.title}

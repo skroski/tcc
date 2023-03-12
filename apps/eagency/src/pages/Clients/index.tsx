@@ -8,15 +8,24 @@ import { withAuthenticationRequired } from "@auth0/auth0-react";
 import Loading from "../../../../../libs/ui-header/src/lib/loading/loading";
 import CreateClient from "../../components/CreateClient";
 
+//import EditClient from "../../components/EditClient";
+
+interface IClients{
+  clients: any[];
+  clientEdited: Function;
+}
+
 export function Clients() {
   const [clients, setClients] = useState<Client[]>([]);
   const clientsService = new ClientsService();
 
-  function deleteBudget(clientId: string) {
-    clientsService.deleteBudget(clientId).then((response) => {
-      console.log(response);
+  function deleteClient(clientId: string) {
+    clientsService.deleteClient(clientId).then((response) => { 
+      alert("Cliente excluído com sucesso!");
     });
+   
   }
+
   const getClients: () => Promise<void> = useCallback(async () => {
     const resp: AxiosResponse<Client[]> = await axios.get<Client[]>(
       API_URL + "/Clients"
@@ -81,7 +90,7 @@ export function Clients() {
                         <tbody className="divide-y divide-gray-200">
                           <tr>
                             <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                              1
+                              {s._id}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                               {s.name}
