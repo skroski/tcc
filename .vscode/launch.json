@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch Chrome against localhost",
             //"url": "http://localhost:3333",
-            "url": "https://eagencyapp.herokuapp.com/api",
+            "url": "https://eagencyapp.herokuapp.com",
             "webRoot": "${workspaceFolder}"
         }
     ]
